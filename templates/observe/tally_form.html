@@ -1,0 +1,50 @@
+{% extends "_layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<div class='well'>
+		<h4 class='tally-header'>{{committee}} {{committee_name}} </h4>
+		<form action="{% url 'tally_start' id committee %}" method="POST">
+		<h4>Moderators</h4>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td"> </div>
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">Presbytery</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{moderator_formset.management_form}}
+		{% for form in moderator_formset %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+		{{vice_moderator_formset.management_form}}
+		{% for form in vice_moderator_formset %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+		<h4>Commissioners/Delegates</h4>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">Presbytery</div>
+			<div class="tally-row add_td">Identities</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{formset1.management_form}}
+		{% for form in formset1 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+	<div class='form-actions'>
+		<input type='submit' name='submit' value='Save' class='btn btn-primary'>
+	</div>
+	<div>
+		<img width="300px" src="{{STATIC_URL}}img/demograph_key.jpg"></img>
+	</div>
+</div>
+</div>
+{% endblock %}

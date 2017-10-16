@@ -1,0 +1,22 @@
+
+{% extends "_layouts/base.html" %}
+{% block inner_content %}
+<div class="container">
+  <p>Your login is required to access the application. You will be able to access participant information for each assembly committee and see a brief record of what you observed.</p> 
+  <p>Why? We need to know a little bit about you because we’ve learned that the social identities of an observer impacts what is seen, heard and recorded in assembly committee rooms. It also tells us in a big picture who is observing and, weighed with who is participating, gives us an idea if we’re missing parts of the stories, whether we are recruiting diverse observers, and helps us evaluate the data we get.</p> 
+  <p>A simple login saves time when you return to the app and when you don’t have to repeat the registration process.</p>
+    </hr>
+{% if user.is_active %}
+<p>You are already registered and logged in.</p>
+{% else %}
+<div class="well registerform">
+<form action="{% url 'register' %}" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input class="button small" type="submit" value="Submit"/>
+</form>
+</div>
+{% endif %}
+</div>
+{% endblock %}

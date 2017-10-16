@@ -1,0 +1,30 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_class %}po-form-home-page{% endblock %}
+
+{% block inner_content %}
+  <div class="container">
+  	<div class="well">
+  	<p><b>Welcome to Process Observation.</b></p> 
+    <p>This tool is a website based application (web app) and shares the particularities of its kind. Until you hit save, nothing is recorded. Please complete the observation within the same day as the committee met.<p>
+  	<p>This tool only works with your use. It will allow you to record your observations (what you see and hear, what you notice).  During the course of many observations, we may be able to see patterns of participation in the GA committee and in committees in an assembly, and perhaps patterns that hold true for other assemblies. We are seeking to measure what is normally invisible and silent in our decision-making processes because it is perceived to be the process itself.  We are looking to describe human behavior.</p> 
+  	<p>You are uniquely qualified to observe and notice differently than others may. We need your gifts to make this measure of participation work best. Process Observers should come from all walks of life and circumstances. You cannot be too (fill in the blank with any descriptor) to be an observer, as long as you can access the app and record your observations.</p> 
+  	<p>We’ve asked committee leaders to suggest committee practices that will make this easier – persons speaking are asked to identify themselves by name and presbytery before they speak. Microphones will be used in committee rooms to make sure all can hear one another.</p> 
+  	<p>POWA (the process observation web application) includes the most current rosters of the GA committees and updates when you select a committee to observe. Like its counterpart, PC-Biz, it is optimized for smart phone and tablet access. The content screens are navigable by scrolling and clicking. You can also use a laptop computer. A fact sheet of representation in each committee room will be available in PC-Biz.</p>
+    <p><a href="https://www.pc-biz.org/#/resources">PC-Biz Resources</a></p>
+    <p><a href="https://pcbiz.s3.amazonaws.com/Uploads/17e13be2-4297-4e8b-8920-ede7cbc7e10c/AC%20Representation%20Profile.pdf">PC-Biz Committee Profiles</a></p>
+  	<p>A key to effective process observation is remembering it is NOT about the content of the discussions. Rather you record what you see and hear. The “how” decisions were made matters most of all to this consideration. This begins with simply noting who speaks and how many times. A simple + and – button beside a participant’s name will give you a way to record when they speak (and make corrections when you accidentally record participation in error).</p> 
+  	<p>After you record members’ participation, hit save and you will be presented with questions to explore what you saw and heard. The focus will be on what you noticed…and what patterns you saw and heard during your observations.</p> 
+  	<p>Thank you.  We cannot measure participation without you. Please widen our circles by inviting others to observe the committees and attend to how we make decisions in the Presbyterian Church USA.</p> 
+  	<p>If you'd like to print a copy of the form, 
+    <a href="/static/process-observation.pdf">click here</a>.</p>
+    <p>Thank you!</p>
+  	{% if user.is_active %}
+  	<h2></h2>
+  	<a class="btn btn-primary" href="/beginobservation">Begin an Observation</a>
+  	{% else %}
+    <h2>To get started <a class="btn btn-primary" href="/login">Login</a> or <a class="btn btn-primary" href="/register">Register for an Account</a>.</h2>
+    {% endif %}
+</div>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "_layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<script>
+  $(function() {
+    $( ".datetimepicker" ).datetimepicker({
+    	format: 'h:mm A',
+        //sideBySide: true,
+        ignoreReadonly: true,
+        widgetPositioning: {vertical: 'bottom'}
+    }).each(function() {
+    	$(this).parent().attr('style','position:relative');
+    });
+  });
+</script>
+
+<div class="container">
+
+    {% if general_form_error %}
+        <div class="has-error">
+            <span class="has-error help-block" style="font-size:17px;">
+                <strong>{{ general_form_error }}</strong>
+            </span>
+        </div>
+    {% endif %}
+
+	<div class='well'>
+
+		<form action="{% url 'questionnaire_start' id %}" method="POST">
+		
+		{% crispy observation_time_form %}
+
+		{{formset.management_form | crispy}}
+		{% for form in formset %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+	<!-- {% crispy formset %} -->
+	<div class='form-actions'>
+		<input type='submit' name='submit' value='Save' class='btn btn-primary'>
+	</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "_layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<div class='well'>
+		<h1 class='tally-header'>{{committee}} {{committee_name}} </h1>
+		<form action="{% url 'tally_start' id committee %}" method="POST">
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td"> </div>
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">ID</div>
+			<div class="tally-age add_td">Age</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{moderator_formset.management_form}}
+		{% for form in moderator_formset %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+		{{vice_moderator_formset.management_form}}
+		{% for form in vice_moderator_formset %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+		<h3>Ruling Elder Commissioners</h3>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">ID</div>
+			<div class="tally-age add_td">Age</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{formset1.management_form}}
+		{% for form in formset1 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+        <h3>Teaching Elder Commissioners</h3>
+		 <div class='add_table'>
+		 <div class="add_tr">
+		 	<div class="tally-row add_td">Name</div>
+		 	<div class="tally-row add_td">ID</div>
+		 	<div class="tally-age add_td">Age</div>
+		 	<div class="tally-count add_td">Count</div>
+		 </div>
+		{{formset2.management_form}}
+		{% for form in formset2 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+	    </div>
+		<h3>Young Adult Advisory Delegates</h3>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">ID</div>
+			<div class="tally-age add_td">Age</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{formset3.management_form}}
+		{% for form in formset3 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+       	<h3>Theological Student Advisory Delegates</h3>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">ID</div>
+			<div class="tally-age add_td">Age</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{formset4.management_form}}
+		{% for form in formset4 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+        <h3>Missionary Advisory Delegates</h3>
+		<div class='add_table'>
+		<div class="add_tr">
+			<div class="tally-row add_td">Name</div>
+			<div class="tally-row add_td">ID</div>
+			<div class="tally-age add_td">Age</div>
+			<div class="tally-count add_td">Count</div>
+		</div>
+		{{formset5.management_form}}
+		{% for form in formset5 %}
+		  {{form.id}}
+		  {% crispy form %}
+		{% endfor %}
+       </div>
+	<div class='form-actions'>
+		<input type='submit' name='submit' value='Save' class='btn btn-primary'>
+	</div>
+</div>
+</div>
+{% endblock %}

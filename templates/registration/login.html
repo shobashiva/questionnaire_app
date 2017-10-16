@@ -1,0 +1,25 @@
+
+{% extends "_layouts/base.html" %}
+{% block inner_content %}
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class='alert alert-block alert-success'>{{message}}</div>
+    {% endfor %}
+    {% endif %}
+    <div class="col-md-6">
+        <h1>Log in to Process Observations</h1>
+        </hr>
+        <div class="well">
+            <form action="{% url 'login' %}" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input class="button small" type="submit" value="Submit"/>
+        <div>
+    </div>            
+</div>
+   <div class="farewell"> 
+    <a href="/forgot">Forgot password?</a>
+   </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "_layouts/base_no_nav.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<h1>Please fill out your profile information</h1>
+    </hr>
+    <div class='well'>
+    {% crispy form %}
+</div>
+</div>
+{% endblock %}
